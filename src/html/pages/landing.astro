@@ -1,0 +1,173 @@
+---
+import Head from "@components/_head.astro"
+import Scripts from "@components/_scripts.astro"
+import AuthScripts from "@components/_auth-scripts.astro"
+
+const title = "Civics Attention | Welcome"
+const path = "../../dist"
+
+// Smart path resolution
+const pathname = Astro.url.pathname;
+const pathSegments = pathname.split('/').filter(segment => segment !== '');
+const depth = pathSegments.length > 0 ? pathSegments.length - 1 : 0;
+const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
+
+const loginUrl = `${deploymentPath}examples/login.html`;
+const registerUrl = `${deploymentPath}examples/register.html`;
+const dashboardUrl = `${deploymentPath}index2.html`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={title} path={path} />
+  </head>
+  <body class="bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body shadow-sm py-3">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href={deploymentPath + "landing.html"}>
+          <img
+            src={deploymentPath + "assets/img/AdminLTELogo.png"}
+            alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: .8; height: 36px;"
+          />
+          <span class="fw-semibold">Civics Attention</span>
+        </a>
+        <div class="d-flex gap-2">
+          <a class="btn btn-outline-primary" href={loginUrl} data-auth-when="signed-out">Sign In</a>
+          <a class="btn btn-primary" href={dashboardUrl} data-auth-when="signed-in">Go to Dashboard</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="py-5">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <span class="badge text-bg-primary-subtle text-primary mb-3">New</span>
+            <h1 class="display-5 fw-bold mb-3">Keep an eye on the civic stories that matter most.</h1>
+            <p class="lead text-secondary mb-4">
+              Track engagement, community impact, and trending conversations with the AdminLTE toolkit you already know.
+              Build your outreach strategy with beautiful dashboards and actionable summaries.
+            </p>
+            <div class="d-flex flex-column flex-sm-row gap-3">
+              <a class="btn btn-primary btn-lg" href={registerUrl} data-auth-when="signed-out">
+                Get Started
+              </a>
+              <a class="btn btn-outline-primary btn-lg" href={loginUrl} data-auth-when="signed-out">
+                Sign In
+              </a>
+              <a class="btn btn-success btn-lg d-none" href={dashboardUrl} data-auth-when="signed-in">
+                Continue as {""}<span data-auth-user-name>Guest</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body p-4">
+                <h2 class="h4 fw-semibold mb-4">A snapshot of your civic engagement</h2>
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <div class="info-box shadow-sm">
+                      <span class="info-box-icon text-bg-primary"><i class="bi bi-people-fill"></i></span>
+                      <div class="info-box-content">
+                        <span class="info-box-text">Active supporters</span>
+                        <span class="info-box-number">1,284</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="info-box shadow-sm">
+                      <span class="info-box-icon text-bg-success"><i class="bi bi-broadcast"></i></span>
+                      <div class="info-box-content">
+                        <span class="info-box-text">Campaigns live</span>
+                        <span class="info-box-number">36</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="info-box shadow-sm">
+                      <span class="info-box-icon text-bg-warning"><i class="bi bi-lightning-charge-fill"></i></span>
+                      <div class="info-box-content">
+                        <span class="info-box-text">Engagement boost</span>
+                        <span class="info-box-number">+18%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="info-box shadow-sm">
+                      <span class="info-box-icon text-bg-danger"><i class="bi bi-graph-up-arrow"></i></span>
+                      <div class="info-box-content">
+                        <span class="info-box-text">Stories tracked</span>
+                        <span class="info-box-number">92</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="mt-5 pt-4">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge text-bg-primary me-2">01</span>
+                    <h3 class="h5 mb-0">Curated Insights</h3>
+                  </div>
+                  <p class="text-secondary mb-0">
+                    Turn raw updates into digestible highlights with the AdminLTE cards, tables, and charts bundled in this template.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge text-bg-success me-2">02</span>
+                    <h3 class="h5 mb-0">Collaboration Ready</h3>
+                  </div>
+                  <p class="text-secondary mb-0">
+                    Share dashboards with your team, align on priorities, and keep everyone informed with real-time notifications.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge text-bg-warning me-2">03</span>
+                    <h3 class="h5 mb-0">Launch Faster</h3>
+                  </div>
+                  <p class="text-secondary mb-0">
+                    Use the prebuilt AdminLTE components to stand up new modules in minutes without touching your design system.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="bg-body border-top py-4 mt-auto">
+      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <span class="text-secondary">&copy; {new Date().getFullYear()} Civics Attention System</span>
+        <div class="d-flex gap-3">
+          <a class="link-secondary" href="#">Privacy</a>
+          <a class="link-secondary" href="#">Terms</a>
+          <a class="link-secondary" href={loginUrl}>Sign In</a>
+        </div>
+      </div>
+    </footer>
+
+    <Scripts path={path} />
+    <AuthScripts mode="landing" />
+  </body>
+</html>

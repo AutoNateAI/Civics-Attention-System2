@@ -18,7 +18,7 @@ const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
         </a>
       </li>
       <li class="nav-item d-none d-md-block">
-        <a href="#" class="nav-link">Home</a>
+        <a href={deploymentPath + "landing.html"} class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-md-block">
         <a href="#" class="nav-link">Contact</a>
@@ -174,7 +174,7 @@ const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
             class="user-image rounded-circle shadow"
             alt="User Image"
           />
-          <span class="d-none d-md-inline">Alexander Pierce</span>
+          <span class="d-none d-md-inline" data-auth-user-name>Alexander Pierce</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
           <!--begin::User Image-->
@@ -185,8 +185,8 @@ const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
               alt="User Image"
             />
             <p>
-              Alexander Pierce - Web Developer
-              <small>Member since Nov. 2023</small>
+              <span data-auth-user-name>Alexander Pierce</span>
+              <small data-auth-user-email>alexander.pierce@example.com</small>
             </p>
           </li>
           <!--end::User Image-->
@@ -209,8 +209,14 @@ const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
           <!--end::Menu Body-->
           <!--begin::Menu Footer-->
           <li class="user-footer">
-            <a href="#" class="btn btn-default btn-flat">Profile</a>
-            <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+            <a href="#" class="btn btn-default btn-flat" data-auth-when="signed-in">Profile</a>
+            <a
+              href="#"
+              class="btn btn-default btn-flat float-end"
+              data-auth-action="signout"
+            >
+              Sign out
+            </a>
           </li>
           <!--end::Menu Footer-->
         </ul>
